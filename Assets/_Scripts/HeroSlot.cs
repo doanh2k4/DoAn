@@ -8,31 +8,28 @@ public class HeroSlot : MonoBehaviour
     [Header("Giao diện")]
     public GameObject highlightCircle; // Kéo thả vòng tròn phát sáng vào đây
 
-    public void PlaceHero(GameObject heroPrefab)
+    // THAY ĐỔI: Hàm nhận thêm tham số level
+    public void PlaceHero(GameObject heroPrefab, int level)
     {
-        // 1. Đẻ ra con Tướng tại vị trí của Slot (Logic cũ)
         currentHero = Instantiate(heroPrefab, transform.position, Quaternion.identity);
         currentHero.transform.SetParent(transform);
         isOccupied = true;
         HideHighlight();
 
-        // --- TUYỆT CHIÊU XỬ LÝ DỨT ĐIỂM BỆNH NHẢY NHẢY ---
-        // 2. Lấy Rigidbody2D của con tướng vừa đẻ ra
+        // Xử lý chống nhảy vật lý cũ của cậu giữ nguyên
         Rigidbody2D rb = currentHero.GetComponent<Rigidbody2D>();
-
-        // 3. Nếu có Rigidbody, hãy XÓA BỎ NÓ HOÀN TOÀN!
         if (rb != null)
         {
-            // Tắt mô phỏng vật lý ngay lập tức trong khung hình này
             rb.simulated = false;
-
-            // Xóa component khỏi object (thực hiện vào cuối khung hình)
             Destroy(rb);
-
-            // Debug cho chắc ăn
-            Debug.Log("<color=green>Đã xóa Rigidbody2D của Hero để chống nhảy!</color>");
         }
-        // --------------------------------------------------
+
+        // --- ĐOẠN CODE MỚI: Tìm script chiến đấu của Tướng để kích hoạt Level ---
+        HeroCombat combatScript = currentHero.GetComponent<HeroCombat>();
+        if (combatScript != null)
+        {
+            combatScript.ApplyLevelStats(level); // Bảo con tướng tự tăng chỉ số
+        }
     }
 
     // Hàm gọi để bật sáng

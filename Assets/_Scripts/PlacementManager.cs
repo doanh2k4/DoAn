@@ -12,24 +12,28 @@ public class PlacementManager : MonoBehaviour
     private GameObject draggingPreview;
     private HeroSlot hoveredSlot;
 
+    private int currentHeroLevel;
+    private int currentHeroCost;
+
     void Awake() { Instance = this; }
 
-    public void StartDragging(int heroIndex)
+    // ĐÃ SỬA: Hàm nhận chính xác 3 tham số (heroIndex, cost, level) từ ShopItem truyền sang
+    public void StartDragging(int heroIndex, int cost, int level)
     {
+        currentHeroCost = cost; // Ghi nhớ giá tiền
+        currentHeroLevel = level; // ĐÃ SỬA: Lấy đúng biến 'level' từ tham số truyền vào
+
         selectedHeroPrefab = heroPrefabs[heroIndex];
         draggingPreview = Instantiate(selectedHeroPrefab);
 
-        // 1. Tắt não (Script)
         foreach (MonoBehaviour script in draggingPreview.GetComponents<MonoBehaviour>())
         {
             script.enabled = false;
         }
 
-        // 2. DIỆT TẬN GỐC LỖI NHẢY: Đóng băng vật lý ngay lập tức!
         Rigidbody2D rb = draggingPreview.GetComponent<Rigidbody2D>();
-        if (rb != null) rb.simulated = false; // Tắt sạch tính toán va chạm
+        if (rb != null) rb.simulated = false;
 
-        // Tắt luôn Animator để bóng ma đứng im
         Animator anim = draggingPreview.GetComponent<Animator>();
         if (anim != null) anim.enabled = false;
     }
@@ -60,7 +64,6 @@ public class PlacementManager : MonoBehaviour
     {
         if (selectedHeroPrefab == null || draggingPreview == null || Mouse.current == null) return;
 
-        // Vị trí chuột
         Vector2 mouseScreenPosition = Mouse.current.position.ReadValue();
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(mouseScreenPosition);
         mousePos.z = 0;
@@ -68,19 +71,16 @@ public class PlacementManager : MonoBehaviour
 
         SetDraggingPreviewVisibility(true);
 
-        // TUYỆT CHIÊU: Bắn Laser xuyên thấu mọi thứ (RaycastAll)
         RaycastHit2D[] hits = Physics2D.RaycastAll(mousePos, Vector2.zero);
-
         HeroSlot currentHitSlot = null;
 
-        // Lục tìm trong danh sách các vật bị đâm trúng
         foreach (RaycastHit2D hit in hits)
         {
             HeroSlot slot = hit.collider.GetComponent<HeroSlot>();
             if (slot != null)
             {
-                currentHitSlot = slot; // Đã tìm thấy Slot!
-                break; // Tìm thấy rồi thì dừng lại
+                currentHitSlot = slot;
+                break;
             }
         }
 
@@ -91,7 +91,6 @@ public class PlacementManager : MonoBehaviour
             SetDraggingPreviewVisibility(false);
         }
 
-        // Nhả chuột
         if (Mouse.current.leftButton.wasReleasedThisFrame)
         {
             TryPlaceHero(currentHitSlot);
@@ -100,13 +99,16 @@ public class PlacementManager : MonoBehaviour
 
     void TryPlaceHero(HeroSlot slotToPlace)
     {
-        // Nếu lúc thả chuột đang đè lên một Slot trống
         if (slotToPlace != null && slotToPlace.isOccupied == false)
         {
-            slotToPlace.PlaceHero(selectedHeroPrefab);
+            slotToPlace.PlaceHero(selectedHeroPrefab, currentHeroLevel);
+
+            if (GameManager.Instance != null)
+            {
+                GameManager.Instance.SpendGold(currentHeroCost);
+            }
         }
 
-        // Dọn dẹp
         if (hoveredSlot != null)
         {
             hoveredSlot.HideHighlight();

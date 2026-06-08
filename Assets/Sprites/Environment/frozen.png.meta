@@ -1,0 +1,1586 @@
+fileFormatVersion: 2
+guid: 417021a993114d6498ab27764d5cbc0d
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 36207291187918886
+    second: frozen_0
+  - first:
+      213: 6096707029590163064
+    second: frozen_1
+  - first:
+      213: -4121060106413205950
+    second: frozen_2
+  - first:
+      213: 8208295433381695523
+    second: frozen_3
+  - first:
+      213: -3369122192281057519
+    second: frozen_4
+  - first:
+      213: -3741531608581941367
+    second: frozen_5
+  - first:
+      213: 5057548824268562632
+    second: frozen_6
+  - first:
+      213: -8004705284315764530
+    second: frozen_7
+  - first:
+      213: -8512739076814306599
+    second: frozen_8
+  - first:
+      213: 4327959720081614433
+    second: frozen_9
+  - first:
+      213: 8872783164103973906
+    second: frozen_10
+  - first:
+      213: -112649243817847895
+    second: frozen_11
+  - first:
+      213: 2220420067665133289
+    second: frozen_12
+  - first:
+      213: 2883146640240133512
+    second: frozen_13
+  - first:
+      213: -5686521380977283579
+    second: frozen_14
+  - first:
+      213: -1678072932413751022
+    second: frozen_15
+  - first:
+      213: -7758436611907264287
+    second: frozen_16
+  - first:
+      213: -5172755367664797316
+    second: frozen_17
+  - first:
+      213: 4318995422458106752
+    second: frozen_18
+  - first:
+      213: -7111126951909982504
+    second: frozen_19
+  - first:
+      213: -5374072414296207608
+    second: frozen_20
+  - first:
+      213: -1994615233774226944
+    second: frozen_21
+  - first:
+      213: -6199065537268470726
+    second: frozen_22
+  - first:
+      213: 2470938328376250894
+    second: frozen_23
+  - first:
+      213: -2414311038481759298
+    second: frozen_24
+  - first:
+      213: 8924268124091519341
+    second: frozen_25
+  - first:
+      213: 5888837382622487893
+    second: frozen_26
+  - first:
+      213: -3330348054015262915
+    second: frozen_27
+  - first:
+      213: 728242128969964467
+    second: frozen_28
+  - first:
+      213: -8980038610716684782
+    second: frozen_29
+  - first:
+      213: 2677980976780648012
+    second: frozen_30
+  - first:
+      213: -3251325086623408177
+    second: frozen_31
+  - first:
+      213: -1576723954583407251
+    second: frozen_32
+  - first:
+      213: 2922851609114347882
+    second: frozen_33
+  - first:
+      213: -3138273478125230569
+    second: frozen_34
+  - first:
+      213: 859227852702583974
+    second: frozen_35
+  - first:
+      213: 7152595377133192359
+    second: frozen_36
+  - first:
+      213: -6288733141014489340
+    second: frozen_37
+  - first:
+      213: 7673905606456622184
+    second: frozen_38
+  - first:
+      213: -1326119332761243797
+    second: frozen_39
+  - first:
+      213: 5555080279471560164
+    second: frozen_40
+  - first:
+      213: 8598697152077820768
+    second: frozen_41
+  - first:
+      213: 7824812016495326369
+    second: frozen_42
+  - first:
+      213: 575353833963447013
+    second: frozen_43
+  - first:
+      213: -5400355123606439708
+    second: frozen_44
+  - first:
+      213: 9065637121280012037
+    second: frozen_45
+  - first:
+      213: 6254356151715976038
+    second: frozen_46
+  - first:
+      213: 3716972223731575347
+    second: frozen_47
+  - first:
+      213: 2472355979866871742
+    second: frozen_48
+  - first:
+      213: 2183848667639336438
+    second: frozen_49
+  - first:
+      213: 8729835820211872230
+    second: frozen_50
+  - first:
+      213: -4246849944009132107
+    second: frozen_51
+  - first:
+      213: -6870490215248205347
+    second: frozen_52
+  - first:
+      213: 1999916925181782975
+    second: frozen_53
+  - first:
+      213: 5465594549525688541
+    second: frozen_54
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: frozen_0
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 0
+        width: 295
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 628f889e652a08000800000000000000
+      internalID: 36207291187918886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frozen_1
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 974
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87e395eddbadb9450800000000000000
+      internalID: 6096707029590163064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frozen_2
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 335
+        width: 8
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2461533eaad0fc6c0800000000000000
+      internalID: -4121060106413205950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frozen_3
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 622
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3205d2e0539b9e170800000000000000
+      internalID: 8208295433381695523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frozen_4
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 278
+        width: 603
+        height: 746
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 117c33c67397e31d0800000000000000
+      internalID: -3369122192281057519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frozen_5
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 0
+        width: 760
+        height: 848
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 987d39253d8631cc0800000000000000
+      internalID: -3741531608581941367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frozen_6
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 598
+        width: 14
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c0e8b01cd5003640800000000000000
+      internalID: 5057548824268562632
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frozen_7
+      rect:
+        serializedVersion: 2
+        x: 488
+        y: 447
+        width: 21
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec8aaa464f299e090800000000000000
+      internalID: -8004705284315764530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frozen_8
+      rect:
+        serializedVersion: 2
+        x: 489
+        y: 525
+        width: 16
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d285ec79ecacd980800000000000000
+      internalID: -8512739076814306599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frozen_9
+      rect:
+        serializedVersion: 2
+        x: 558
+        y: 775
+        width: 77
+        height: 75
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 166e9a55f60001c30800000000000000
+      internalID: 4327959720081614433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frozen_10
+      rect:
+        serializedVersion: 2
+        x: 618
+        y: 297
+        width: 10
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21cdb791745722b70800000000000000
+      internalID: 8872783164103973906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frozen_11
+      rect:
+        serializedVersion: 2
+        x: 631
+        y: 297
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9a3550e0c1acf6ef0800000000000000
+      internalID: -112649243817847895
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frozen_12
+      rect:
+        serializedVersion: 2
+        x: 646
+        y: 817
+        width: 35
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9ee3459894480de10800000000000000
+      internalID: 2220420067665133289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frozen_13
+      rect:
+        serializedVersion: 2
+        x: 650
+        y: 855
+        width: 7
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 885cfdef79ef20820800000000000000
+      internalID: 2883146640240133512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frozen_14
+      rect:
+        serializedVersion: 2
+        x: 653
+        y: 287
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50e6f27beea6511b0800000000000000
+      internalID: -5686521380977283579
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frozen_15
+      rect:
+        serializedVersion: 2
+        x: 677
+        y: 287
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 211c74c0f8946b8e0800000000000000
+      internalID: -1678072932413751022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frozen_16
+      rect:
+        serializedVersion: 2
+        x: 678
+        y: 845
+        width: 19
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e0e1e6e10f745490800000000000000
+      internalID: -7758436611907264287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frozen_17
+      rect:
+        serializedVersion: 2
+        x: 686
+        y: 300
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c793858466ea638b0800000000000000
+      internalID: -5172755367664797316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frozen_18
+      rect:
+        serializedVersion: 2
+        x: 689
+        y: 863
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0835726247720fb30800000000000000
+      internalID: 4318995422458106752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frozen_19
+      rect:
+        serializedVersion: 2
+        x: 695
+        y: 303
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8def2bea6b3305d90800000000000000
+      internalID: -7111126951909982504
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frozen_20
+      rect:
+        serializedVersion: 2
+        x: 695
+        y: 285
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80f06acbc957b65b0800000000000000
+      internalID: -5374072414296207608
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frozen_21
+      rect:
+        serializedVersion: 2
+        x: 702
+        y: 301
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 002fd474304b154e0800000000000000
+      internalID: -1994615233774226944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frozen_22
+      rect:
+        serializedVersion: 2
+        x: 703
+        y: 857
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3c2fb7ecbe78f9a0800000000000000
+      internalID: -6199065537268470726
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frozen_23
+      rect:
+        serializedVersion: 2
+        x: 719
+        y: 286
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e0293cc61598a4220800000000000000
+      internalID: 2470938328376250894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frozen_24
+      rect:
+        serializedVersion: 2
+        x: 721
+        y: 293
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb38dfde6e4ae7ed0800000000000000
+      internalID: -2414311038481759298
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frozen_25
+      rect:
+        serializedVersion: 2
+        x: 739
+        y: 292
+        width: 19
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6111d8739e59db70800000000000000
+      internalID: 8924268124091519341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frozen_26
+      rect:
+        serializedVersion: 2
+        x: 741
+        y: 286
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 555214b266a59b150800000000000000
+      internalID: 5888837382622487893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frozen_27
+      rect:
+        serializedVersion: 2
+        x: 751
+        y: 840
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3fb10ef61a38c1d0800000000000000
+      internalID: -3330348054015262915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frozen_28
+      rect:
+        serializedVersion: 2
+        x: 764
+        y: 291
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3bb9abf9b5c3b1a00800000000000000
+      internalID: 728242128969964467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frozen_29
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 279
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21e80fa367e706380800000000000000
+      internalID: -8980038610716684782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frozen_30
+      rect:
+        serializedVersion: 2
+        x: 770
+        y: 843
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4e934482891a2520800000000000000
+      internalID: 2677980976780648012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frozen_31
+      rect:
+        serializedVersion: 2
+        x: 780
+        y: 278
+        width: 26
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fcfde7a5f09f0e2d0800000000000000
+      internalID: -3251325086623408177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frozen_32
+      rect:
+        serializedVersion: 2
+        x: 782
+        y: 303
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d65f43acae95e1ae0800000000000000
+      internalID: -1576723954583407251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frozen_33
+      rect:
+        serializedVersion: 2
+        x: 825
+        y: 293
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a6980747d0e009820800000000000000
+      internalID: 2922851609114347882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frozen_34
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 296
+        width: 7
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 716e05026ec9274d0800000000000000
+      internalID: -3138273478125230569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frozen_35
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 283
+        width: 19
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ac857dfd279ceb00800000000000000
+      internalID: 859227852702583974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frozen_36
+      rect:
+        serializedVersion: 2
+        x: 862
+        y: 0
+        width: 665
+        height: 1024
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7a40024799f134360800000000000000
+      internalID: 7152595377133192359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frozen_37
+      rect:
+        serializedVersion: 2
+        x: 873
+        y: 297
+        width: 30
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 407da92078ee9b8a0800000000000000
+      internalID: -6288733141014489340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frozen_38
+      rect:
+        serializedVersion: 2
+        x: 882
+        y: 288
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86cb9b0bd703f7a60800000000000000
+      internalID: 7673905606456622184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frozen_39
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 806
+        width: 41
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6fecf03e7da89de0800000000000000
+      internalID: -1326119332761243797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frozen_40
+      rect:
+        serializedVersion: 2
+        x: 923
+        y: 299
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e51ea4051c971d40800000000000000
+      internalID: 5555080279471560164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frozen_41
+      rect:
+        serializedVersion: 2
+        x: 994
+        y: 198
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 063f2c08085b45770800000000000000
+      internalID: 8598697152077820768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frozen_42
+      rect:
+        serializedVersion: 2
+        x: 994
+        y: 153
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a479654211579c60800000000000000
+      internalID: 7824812016495326369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frozen_43
+      rect:
+        serializedVersion: 2
+        x: 994
+        y: 24
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e2ec8d73411cf700800000000000000
+      internalID: 575353833963447013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frozen_44
+      rect:
+        serializedVersion: 2
+        x: 995
+        y: 283
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4e83a7c90a51e05b0800000000000000
+      internalID: -5400355123606439708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frozen_45
+      rect:
+        serializedVersion: 2
+        x: 995
+        y: 147
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 50f6d741eec9fcd70800000000000000
+      internalID: 9065637121280012037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frozen_46
+      rect:
+        serializedVersion: 2
+        x: 1060
+        y: 565
+        width: 21
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6635fc178cfebc650800000000000000
+      internalID: 6254356151715976038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frozen_47
+      rect:
+        serializedVersion: 2
+        x: 1065
+        y: 516
+        width: 16
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33aa38b4b86559330800000000000000
+      internalID: 3716972223731575347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frozen_48
+      rect:
+        serializedVersion: 2
+        x: 1066
+        y: 549
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: eb717422aa29f4220800000000000000
+      internalID: 2472355979866871742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frozen_49
+      rect:
+        serializedVersion: 2
+        x: 1077
+        y: 563
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6fd4addeac69e4e10800000000000000
+      internalID: 2183848667639336438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frozen_50
+      rect:
+        serializedVersion: 2
+        x: 1078
+        y: 615
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6e1a5330d6b962970800000000000000
+      internalID: 8729835820211872230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frozen_51
+      rect:
+        serializedVersion: 2
+        x: 1081
+        y: 628
+        width: 6
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b7b2f80a782015c0800000000000000
+      internalID: -4246849944009132107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frozen_52
+      rect:
+        serializedVersion: 2
+        x: 1087
+        y: 520
+        width: 10
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd96557fc8d17a0a0800000000000000
+      internalID: -6870490215248205347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frozen_53
+      rect:
+        serializedVersion: 2
+        x: 1087
+        y: 457
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fbb60c1f8d121cb10800000000000000
+      internalID: 1999916925181782975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: frozen_54
+      rect:
+        serializedVersion: 2
+        x: 1088
+        y: 978
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dd03acae841b9db40800000000000000
+      internalID: 5465594549525688541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      frozen_0: 36207291187918886
+      frozen_1: 6096707029590163064
+      frozen_10: 8872783164103973906
+      frozen_11: -112649243817847895
+      frozen_12: 2220420067665133289
+      frozen_13: 2883146640240133512
+      frozen_14: -5686521380977283579
+      frozen_15: -1678072932413751022
+      frozen_16: -7758436611907264287
+      frozen_17: -5172755367664797316
+      frozen_18: 4318995422458106752
+      frozen_19: -7111126951909982504
+      frozen_2: -4121060106413205950
+      frozen_20: -5374072414296207608
+      frozen_21: -1994615233774226944
+      frozen_22: -6199065537268470726
+      frozen_23: 2470938328376250894
+      frozen_24: -2414311038481759298
+      frozen_25: 8924268124091519341
+      frozen_26: 5888837382622487893
+      frozen_27: -3330348054015262915
+      frozen_28: 728242128969964467
+      frozen_29: -8980038610716684782
+      frozen_3: 8208295433381695523
+      frozen_30: 2677980976780648012
+      frozen_31: -3251325086623408177
+      frozen_32: -1576723954583407251
+      frozen_33: 2922851609114347882
+      frozen_34: -3138273478125230569
+      frozen_35: 859227852702583974
+      frozen_36: 7152595377133192359
+      frozen_37: -6288733141014489340
+      frozen_38: 7673905606456622184
+      frozen_39: -1326119332761243797
+      frozen_4: -3369122192281057519
+      frozen_40: 5555080279471560164
+      frozen_41: 8598697152077820768
+      frozen_42: 7824812016495326369
+      frozen_43: 575353833963447013
+      frozen_44: -5400355123606439708
+      frozen_45: 9065637121280012037
+      frozen_46: 6254356151715976038
+      frozen_47: 3716972223731575347
+      frozen_48: 2472355979866871742
+      frozen_49: 2183848667639336438
+      frozen_5: -3741531608581941367
+      frozen_50: 8729835820211872230
+      frozen_51: -4246849944009132107
+      frozen_52: -6870490215248205347
+      frozen_53: 1999916925181782975
+      frozen_54: 5465594549525688541
+      frozen_6: 5057548824268562632
+      frozen_7: -8004705284315764530
+      frozen_8: -8512739076814306599
+      frozen_9: 4327959720081614433
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

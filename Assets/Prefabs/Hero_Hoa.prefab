@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 860376751246795066}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.5, y: 0, z: 0}
+  m_LocalPosition: {x: 0.366, y: 0.652, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -163,6 +163,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::HeroCombat
   attackRange: 10
   attackRate: 1.5
+  element: 3
   arrowPrefab: {fileID: 3256514656840714791, guid: b3164064ca9622341ab134f4ea964cd0, type: 3}
   firePoint: {fileID: 596785845347377153}
 --- !u!50 &-474719858072363254
