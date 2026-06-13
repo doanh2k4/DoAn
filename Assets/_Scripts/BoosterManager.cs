@@ -22,29 +22,16 @@ public class BoosterManager : MonoBehaviour
 
             if (Castle.Instance != null)
             {
+                // Chỉ cần gọi hàm Heal, Lâu đài sẽ tự lo chuyện chớp sáng
                 Castle.Instance.Heal(50);
-                StartCoroutine(HealFXRoutine());
                 Debug.Log("<color=green>Đã dùng Bơm Máu!</color>");
             }
         }
-        //else Debug.Log("Không đủ tiền Bơm Máu!");
-        { if (NotificationManager.Instance != null) NotificationManager.Instance.ShowWarning("Không đủ Vàng dùng kỹ năng!"); }
-    }
-
-    IEnumerator HealFXRoutine()
-    {
-        // Lấy hình ảnh của Lâu đài, đổi sang màu xanh lá và phình to ra
-        SpriteRenderer castleSprite = Castle.Instance.GetComponent<SpriteRenderer>();
-        if (castleSprite == null) castleSprite = Castle.Instance.GetComponentInChildren<SpriteRenderer>();
-
-        if (castleSprite != null) castleSprite.color = Color.green;
-        Castle.Instance.transform.localScale = Vector3.one * 1.15f;
-
-        yield return new WaitForSeconds(0.2f); // Giữ trong 0.2 giây
-
-        // Trả lại bình thường
-        if (castleSprite != null) castleSprite.color = Color.white;
-        Castle.Instance.transform.localScale = Vector3.one;
+        else
+        {
+            // Đã bọc else chuẩn chỉnh, thông báo không đủ tiền sẽ chạy đúng
+            if (NotificationManager.Instance != null) NotificationManager.Instance.ShowWarning("Không đủ Vàng dùng kỹ năng!");
+        }
     }
 
     // ================= 2. MƯA SAO BĂNG =================
@@ -67,8 +54,10 @@ public class BoosterManager : MonoBehaviour
             StartCoroutine(CameraShakeRoutine(0.4f, 0.3f));
             Debug.Log("<color=red>Đã dùng Mưa Sao Băng (NUKE)!</color>");
         }
-        //else Debug.Log("Không đủ tiền gọi Mưa Sao Băng!");
-        { if (NotificationManager.Instance != null) NotificationManager.Instance.ShowWarning("Không đủ Vàng dùng kỹ năng!"); }
+        else
+        {
+            if (NotificationManager.Instance != null) NotificationManager.Instance.ShowWarning("Không đủ Vàng dùng kỹ năng!");
+        }
     }
 
     IEnumerator NukeFlashRoutine()
@@ -119,8 +108,10 @@ public class BoosterManager : MonoBehaviour
             }
             Debug.Log("<color=cyan>Đã dùng Đóng Băng Thời Gian!</color>");
         }
-        //else Debug.Log("Không đủ tiền Đóng băng!");
-        { if (NotificationManager.Instance != null) NotificationManager.Instance.ShowWarning("Không đủ Vàng dùng kỹ năng!"); }
+        else
+        {
+            if (NotificationManager.Instance != null) NotificationManager.Instance.ShowWarning("Không đủ Vàng dùng kỹ năng!");
+        }
     }
 
     IEnumerator FreezeColorFX(GameObject enemyObj, float duration)

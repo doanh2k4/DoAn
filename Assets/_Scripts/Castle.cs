@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using UnityEngine.UI; // Thêm thư viện UI
+using UnityEngine.UI;
 using System.Collections;
 
 public class Castle : MonoBehaviour
@@ -16,6 +16,12 @@ public class Castle : MonoBehaviour
     public Color flashColor = new Color(1f, 0f, 0f, 0.5f); // Đỏ mờ
     public float flashDuration = 0.1f;
 
+    [Header("Hiệu ứng Hồi máu (MỚI)")]
+    [Tooltip("Kéo Prefab Particle System hồi máu (màu xanh nhẹ, bay lên) vào đây")]
+    public GameObject healParticlePrefab;
+
+    // XÓA BỎ các biến liên quan đến spriteRenderer và coroutine color cũ
+
     private void Awake()
     {
         if (Instance == null) Instance = this;
@@ -26,7 +32,6 @@ public class Castle : MonoBehaviour
     {
         currentHealth = maxHealth;
 
-        // Cập nhật thanh UI lúc mới bắt đầu
         if (hpSlider != null)
         {
             hpSlider.maxValue = maxHealth;
@@ -38,11 +43,11 @@ public class Castle : MonoBehaviour
     {
         currentHealth -= amount;
 
-        // Cập nhật thanh máu trên màn hình
-        if (hpSlider != null) hpSlider.value = currentHealth;
+        if (hpSlider != null)
+            hpSlider.value = currentHealth;
 
-        // Bật màn hình nháy đỏ
-        if (damageFlash != null) StartCoroutine(FlashRoutine());
+        if (damageFlash != null)
+            StartCoroutine(FlashRoutine());
 
         Debug.Log($"<color=red>Lâu đài bị tấn công! Trừ {amount} máu. Còn lại: {currentHealth}</color>");
 
@@ -50,12 +55,7 @@ public class Castle : MonoBehaviour
         {
             currentHealth = 0;
             Debug.Log("<color=yellow>LÂU ĐÀI ĐÃ SẬP! GAME OVER!</color>");
-
-            // KÍCH HOẠT BẢNG THUA
-            if (GameManager.Instance != null)
-            {
-                GameManager.Instance.GameOver();
-            }
+            if (GameManager.Instance != null) GameManager.Instance.GameOver();
         }
     }
 
@@ -64,49 +64,57 @@ public class Castle : MonoBehaviour
         if (damageFlash != null)
         {
             float elapsedTime = 0f;
-            float targetAlpha = flashColor.a; // Độ đậm tối đa cậu chỉnh trên Inspector (ví dụ 0.5)
+            float targetAlpha = flashColor.a;
 
-            // THÌ 1: SÁNG DẦN LÊN (FADE IN)
             while (elapsedTime < flashDuration)
             {
                 elapsedTime += Time.deltaTime;
-                // Hàm Lerp giúp tính toán độ mờ tăng dần theo thời gian rất mượt
                 float currentAlpha = Mathf.Lerp(0f, targetAlpha, elapsedTime / flashDuration);
-
-                damageFlash.color = new Color(flashColor.r, flashColor.g, flashColor.b, currentAlpha);
-                yield return null; // Đợi khung hình tiếp theo
-            }
-
-            elapsedTime = 0f;
-
-            // THÌ 2: MỜ DẦN ĐI (FADE OUT)
-            while (elapsedTime < flashDuration)
-            {
-                elapsedTime += Time.deltaTime;
-                // Hàm Lerp giảm dần độ mờ về 0
-                float currentAlpha = Mathf.Lerp(targetAlpha, 0f, elapsedTime / flashDuration);
-
                 damageFlash.color = new Color(flashColor.r, flashColor.g, flashColor.b, currentAlpha);
                 yield return null;
             }
 
-            // Đảm bảo ảnh tàng hình hoàn toàn sau khi nháy xong
+            elapsedTime = 0f;
+
+            while (elapsedTime < flashDuration)
+            {
+                elapsedTime += Time.deltaTime;
+                float currentAlpha = Mathf.Lerp(targetAlpha, 0f, elapsedTime / flashDuration);
+                damageFlash.color = new Color(flashColor.r, flashColor.g, flashColor.b, currentAlpha);
+                yield return null;
+            }
+
             damageFlash.color = new Color(flashColor.r, flashColor.g, flashColor.b, 0f);
         }
     }
 
-    // HÀM MỚI: Gọi để hồi máu cho lâu đài (Dùng cho hệ Thủy)
+    // ================= HÀM HỒI MÁU VÀ HIỆU ỨNG HẠT BAY LÊN =================
     public void Heal(float amount)
     {
-        if (currentHealth >= maxHealth) return; // Máu đầy rồi thì thôi
+        if (currentHealth >= maxHealth) return;
 
         currentHealth += amount;
-
-        // Không cho máu vượt quá máu tối đa
         if (currentHealth > maxHealth) currentHealth = maxHealth;
 
-        // Cập nhật thanh UI thanh máu
         if (hpSlider != null) hpSlider.value = currentHealth;
+
+        // === KÍCH HOẠT HIỆU ỨNG HẠT (PARTICLE) ===
+        if (healParticlePrefab != null)
+        {
+            // 1. Xác định vị trí chân lâu đài.
+            // transform.position mặc định thường là TÂM của object.
+            Vector3 spawnPos = transform.position;
+
+            // 2. Điều chỉnh Y xuống một chút để nó xuất phát từ chân.
+            // Cậu có thể tùy chỉnh số 1.0f này tùy theo kích thước lâu đài của cậu.
+            spawnPos.y -= 1.0f;
+
+            // 3. Tạo ra hiệu ứng
+            GameObject particleInstance = Instantiate(healParticlePrefab, spawnPos, Quaternion.identity);
+
+            // 4. Tự hủy hiệu ứng sau khi chạy xong (ví dụ sau 2 giây) để tránh rác RAM
+            Destroy(particleInstance, 2.0f);
+        }
 
         Debug.Log($"<color=green>Lâu đài được hồi {amount} máu! Hiện tại: {currentHealth}</color>");
     }
