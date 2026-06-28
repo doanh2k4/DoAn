@@ -32,17 +32,21 @@ public class MainMenuManager : MonoBehaviour
 
     public void PlayGame()
     {
-        // Tính toán Level tiếp theo cần chơi
         int nextLevel = 1;
         if (DataManager.Instance != null)
         {
             nextLevel = DataManager.Instance.gameData.highestClearedWave + 1;
         }
 
-        // Gửi số Level này qua màn chơi thông qua PlayerPrefs
-        PlayerPrefs.SetInt("SelectedLevel", nextLevel);
+        // 🚧 CHỐT CHẶN BẢO VỆ LỖI 1.2: Không cho vượt quá số Level tối đa
+        int maxLevel = PlayerPrefs.GetInt("TotalLevelsInGame", 1);
+        if (nextLevel > maxLevel)
+        {
+            nextLevel = maxLevel; // Nếu đã phá đảo, cho phép chơi lại màn cuối cùng
+            Debug.Log("<color=yellow>Đã phá đảo toàn bộ game! Chơi lại Level cuối.</color>");
+        }
 
-        // Load sang màn chiến đấu
+        PlayerPrefs.SetInt("SelectedLevel", nextLevel);
         SceneManager.LoadScene(1);
     }
 

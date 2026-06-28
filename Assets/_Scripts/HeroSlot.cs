@@ -23,6 +23,9 @@ public class HeroSlot : MonoBehaviour
             rb.simulated = false;
             Destroy(rb);
         }
+        // 🚧 THÊM VÀO ĐÂY: Tắt Collider2D để tướng không làm bia đỡ đạn
+        Collider2D col = currentHero.GetComponent<Collider2D>();
+        if (col != null) col.enabled = false;
 
         // --- ĐOẠN CODE MỚI: Tìm script chiến đấu của Tướng để kích hoạt Level ---
         HeroCombat combatScript = currentHero.GetComponent<HeroCombat>();

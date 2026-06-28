@@ -470,10 +470,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cac3794a69e350b4fb21864f49c7d1c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyMovement
-  maxHealth: 50
+  maxHealth: 100
   hpSlider: {fileID: 912404707024638797}
   speed: 1
   damage: 10
+  goldReward: 15
   attackType: 1
   stopDistance: 3
   attackRate: 1.5

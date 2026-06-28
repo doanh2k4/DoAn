@@ -18,6 +18,12 @@ public class AudioManager : MonoBehaviour
     public AudioClip freezeSound;
     public AudioClip enemyDeathSound;
     public AudioClip notEnoughGoldSound;
+    [Header("Âm thanh Hệ thống & Chiến đấu")]
+    public AudioClip winSound;          // Tiếng Thắng (Victory)
+    public AudioClip loseSound;         // Tiếng Thua (Game Over)
+    public AudioClip waveWarningSound;  // Tiếng còi báo động / Tù và khi có Wave mới
+    public AudioClip castleHitSound;    // Tiếng gạch đá vỡ khi Lâu đài bị đánh
+    public AudioClip bowShootSound;     // Tiếng bắn cung của Tướng
 
     private void Awake()
     {

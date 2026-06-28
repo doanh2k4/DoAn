@@ -20,7 +20,7 @@ public class Castle : MonoBehaviour
     [Tooltip("Kéo Prefab Particle System hồi máu (màu xanh nhẹ, bay lên) vào đây")]
     public GameObject healParticlePrefab;
 
-    // XÓA BỎ các biến liên quan đến spriteRenderer và coroutine color cũ
+    private float waterHealTimer = 0f; // Đồng hồ đếm thời gian hồi máu hệ Thủy
 
     private void Awake()
     {
@@ -39,8 +39,49 @@ public class Castle : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        // ================= LOGIC HỒI MÁU HỆ THỦY MỚI =================
+        waterHealTimer += Time.deltaTime;
+        if (waterHealTimer >= 1f) // Cứ mỗi 1 giây quét 1 lần
+        {
+            waterHealTimer = 0f;
+            ApplyWaterHeroHeal();
+        }
+    }
+
+    private void ApplyWaterHeroHeal()
+    {
+        HeroCombat[] allHeroes = FindObjectsOfType<HeroCombat>();
+        float highestMultiplier = 0f;
+
+        // Tìm xem trên sân có bao nhiêu tướng Thủy, lấy đứa mạnh nhất
+        foreach (HeroCombat hero in allHeroes)
+        {
+            if (hero.element == ElementType.Thuy)
+            {
+                if (hero.damageMultiplier > highestMultiplier)
+                {
+                    highestMultiplier = hero.damageMultiplier;
+                }
+            }
+        }
+
+        // Nếu có ít nhất 1 tướng Thủy trên sân
+        if (highestMultiplier > 0f)
+        {
+            // Hồi 1% máu gốc * hệ số sức mạnh của tướng mạnh nhất
+            // Nghĩa là 5 ông Lv1 cũng chỉ bơm bằng 1 ông Lv1. Nhưng 1 ông Lv3 sẽ bơm mạnh x2.2 lần!
+            float healAmount = maxHealth * 0.01f * highestMultiplier;
+            Heal(healAmount);
+        }
+    }
+
     public void TakeDamage(float amount)
     {
+        // 📢 THÊM DÒNG NÀY: Phát tiếng gạch vỡ khi Lâu đài bị đấm
+        if (AudioManager.Instance != null && AudioManager.Instance.castleHitSound != null)
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.castleHitSound);
         currentHealth -= amount;
 
         if (hpSlider != null)
@@ -88,7 +129,6 @@ public class Castle : MonoBehaviour
         }
     }
 
-    // ================= HÀM HỒI MÁU VÀ HIỆU ỨNG HẠT BAY LÊN =================
     public void Heal(float amount)
     {
         if (currentHealth >= maxHealth) return;
@@ -98,24 +138,16 @@ public class Castle : MonoBehaviour
 
         if (hpSlider != null) hpSlider.value = currentHealth;
 
-        // === KÍCH HOẠT HIỆU ỨNG HẠT (PARTICLE) ===
         if (healParticlePrefab != null)
         {
-            // 1. Xác định vị trí chân lâu đài.
-            // transform.position mặc định thường là TÂM của object.
             Vector3 spawnPos = transform.position;
-
-            // 2. Điều chỉnh Y xuống một chút để nó xuất phát từ chân.
-            // Cậu có thể tùy chỉnh số 1.0f này tùy theo kích thước lâu đài của cậu.
             spawnPos.y -= 1.0f;
-
-            // 3. Tạo ra hiệu ứng
             GameObject particleInstance = Instantiate(healParticlePrefab, spawnPos, Quaternion.identity);
-
-            // 4. Tự hủy hiệu ứng sau khi chạy xong (ví dụ sau 2 giây) để tránh rác RAM
             Destroy(particleInstance, 2.0f);
         }
 
-        Debug.Log($"<color=green>Lâu đài được hồi {amount} máu! Hiện tại: {currentHealth}</color>");
+        // Tớ khuyên cậu NÊN TẮT dòng Debug này đi (thêm // ở đầu), vì bây giờ nó hồi mỗi giây 1 lần, 
+        // để Debug.Log nó sẽ làm rác bảng Console của cậu rất nhanh!
+        // Debug.Log($"<color=green>Lâu đài được hồi {amount} máu! Hiện tại: {currentHealth}</color>");
     }
 }

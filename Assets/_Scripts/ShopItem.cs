@@ -60,31 +60,27 @@ public class ShopItem : MonoBehaviour, IPointerDownHandler, IPointerClickHandler
         }
     }
 
+    // THAY THẾ TOÀN BỘ HÀM NÀY:
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (eventData.button == PointerEventData.InputButton.Right)
+        // THAY ĐỔI CỐT LÕI: Kiểm tra số lần chạm liên tiếp (Double Tap)
+        if (eventData.clickCount == 2)
         {
+            // Logic nâng cấp giữ nguyên hoàn toàn của cậu
             if (currentLevel >= 3) return;
 
-            // Xác định giá cần để nâng cấp
             int neededGold = (currentLevel == 1) ? upgradeToLv2Cost : upgradeToLv3Cost;
 
             if (GameManager.Instance != null && GameManager.Instance.HasEnoughGold(neededGold))
             {
-                // 1. Trừ tiền nâng cấp trong Két Sắt
                 GameManager.Instance.SpendGold(neededGold);
-
-                // 2. Tăng cấp độ thẻ
                 currentLevel++;
 
-                // ==============================================================
-                // 3. THÊM VÀO ĐÂY: TĂNG GIÁ TIỀN MUA TƯỚNG RA SÂN GẤP RƯỠI (x1.5)
+                // Cập nhật giá mua lính
                 heroCost = Mathf.RoundToInt(heroCost * 2f);
-
-                // Cập nhật lại con số hiển thị trên giao diện thẻ
                 if (costText != null) costText.text = heroCost.ToString();
-                // ==============================================================
 
+                // Chạy hiệu ứng rung lắc và đổi màu
                 if (juiceCoroutine != null) StopCoroutine(juiceCoroutine);
                 juiceCoroutine = StartCoroutine(UpgradeJuiceRoutine());
 
@@ -92,8 +88,11 @@ public class ShopItem : MonoBehaviour, IPointerDownHandler, IPointerClickHandler
             }
             else
             {
-                //Debug.Log("<color=red>Không đủ tiền Két Sắt để nâng cấp thẻ này!</color>");
-                if (NotificationManager.Instance != null) NotificationManager.Instance.ShowWarning("Không đủ Vàng nâng cấp!");
+                if (NotificationManager.Instance != null)
+                    NotificationManager.Instance.ShowWarning("Không đủ Vàng nâng cấp!");
+                // 📢 THÊM DÒNG NÀY: Tiếng báo lỗi hết tiền
+                if (AudioManager.Instance != null && AudioManager.Instance.notEnoughGoldSound != null)
+                    AudioManager.Instance.PlaySFX(AudioManager.Instance.notEnoughGoldSound);
             }
         }
     }
@@ -143,10 +142,13 @@ public class ShopItem : MonoBehaviour, IPointerDownHandler, IPointerClickHandler
 
         if (GameManager.Instance != null && !GameManager.Instance.HasEnoughGold(heroCost))
         {
-            //Debug.Log("<color=red>Không đủ " + heroCost + " vàng để mua tướng này.</color>");
-            //return;
+            if (NotificationManager.Instance != null)
+                NotificationManager.Instance.ShowWarning("Không đủ Vàng mua tướng!");
 
-            if (NotificationManager.Instance != null) NotificationManager.Instance.ShowWarning("Không đủ Vàng mua tướng!");
+            // 📢 BỔ SUNG: Chèn thêm tiếng báo lỗi vào đây là chuẩn bài!
+            if (AudioManager.Instance != null && AudioManager.Instance.notEnoughGoldSound != null)
+                AudioManager.Instance.PlaySFX(AudioManager.Instance.notEnoughGoldSound);
+
             return;
         }
 

@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using UnityEngine.InputSystem;
+using UnityEngine.InputSystem; // BẮT BUỘC ĐỂ DÙNG POINTER
 
 public class PlacementManager : MonoBehaviour
 {
@@ -17,11 +17,25 @@ public class PlacementManager : MonoBehaviour
 
     void Awake() { Instance = this; }
 
-    // ĐÃ SỬA: Hàm nhận chính xác 3 tham số (heroIndex, cost, level) từ ShopItem truyền sang
     public void StartDragging(int heroIndex, int cost, int level)
     {
-        currentHeroCost = cost; // Ghi nhớ giá tiền
-        currentHeroLevel = level; // ĐÃ SỬA: Lấy đúng biến 'level' từ tham số truyền vào
+        // Dọn sạch bóng ma cũ nếu người chơi lỡ chạm đúp để nâng cấp
+        if (draggingPreview != null) Destroy(draggingPreview);
+
+        // KIỂM TRA TIỀN TRƯỚC KHI CHO KÉO
+        if (GameManager.Instance != null && !GameManager.Instance.HasEnoughGold(cost))
+        {
+            if (NotificationManager.Instance != null)
+                NotificationManager.Instance.ShowWarning("Không đủ Vàng để gọi lính!");
+
+            if (AudioManager.Instance != null && AudioManager.Instance.notEnoughGoldSound != null)
+                AudioManager.Instance.PlaySFX(AudioManager.Instance.notEnoughGoldSound);
+
+            return; // Hết tiền thì chặn luôn
+        }
+
+        currentHeroCost = cost;
+        currentHeroLevel = level;
 
         selectedHeroPrefab = heroPrefabs[heroIndex];
         draggingPreview = Instantiate(selectedHeroPrefab);
@@ -62,16 +76,37 @@ public class PlacementManager : MonoBehaviour
 
     void Update()
     {
-        if (selectedHeroPrefab == null || draggingPreview == null || Mouse.current == null) return;
+        // 1. HỦY KÉO KHI BẤM CHUỘT PHẢI (Chỉ dùng cho lúc test trên PC)
+        if (selectedHeroPrefab != null && draggingPreview != null)
+        {
+            // Phải check Mouse.current != null để không bị lỗi liệt cảm ứng khi build lên điện thoại
+            if (Mouse.current != null && Mouse.current.rightButton.wasPressedThisFrame)
+            {
+                if (hoveredSlot != null)
+                {
+                    hoveredSlot.HideHighlight();
+                    hoveredSlot = null;
+                }
 
-        Vector2 mouseScreenPosition = Mouse.current.position.ReadValue();
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(mouseScreenPosition);
-        mousePos.z = 0;
-        draggingPreview.transform.position = mousePos;
+                Destroy(draggingPreview);
+                selectedHeroPrefab = null;
+                return;
+            }
+        }
+
+        // 2. KÉO LÍNH BẰNG NGÓN TAY/CHUỘT
+        // SỬA Ở ĐÂY: Đổi Mouse thành Pointer để điện thoại hiểu được
+        if (selectedHeroPrefab == null || draggingPreview == null || Pointer.current == null) return;
+
+        // Đọc vị trí ngón tay chạm trên màn hình
+        Vector2 pointerScreenPosition = Pointer.current.position.ReadValue();
+        Vector3 pointerPos = Camera.main.ScreenToWorldPoint(pointerScreenPosition);
+        pointerPos.z = 0;
+        draggingPreview.transform.position = pointerPos;
 
         SetDraggingPreviewVisibility(true);
 
-        RaycastHit2D[] hits = Physics2D.RaycastAll(mousePos, Vector2.zero);
+        RaycastHit2D[] hits = Physics2D.RaycastAll(pointerPos, Vector2.zero);
         HeroSlot currentHitSlot = null;
 
         foreach (RaycastHit2D hit in hits)
@@ -91,7 +126,9 @@ public class PlacementManager : MonoBehaviour
             SetDraggingPreviewVisibility(false);
         }
 
-        if (Mouse.current.leftButton.wasReleasedThisFrame)
+        // 3. THẢ LÍNH XUỐNG
+        // SỬA Ở ĐÂY: Nhận biết thao tác nhấc ngón tay lên khỏi màn hình (hoặc nhả chuột)
+        if (Pointer.current.press.wasReleasedThisFrame)
         {
             TryPlaceHero(currentHitSlot);
         }
@@ -101,11 +138,13 @@ public class PlacementManager : MonoBehaviour
     {
         if (slotToPlace != null && slotToPlace.isOccupied == false)
         {
-            slotToPlace.PlaceHero(selectedHeroPrefab, currentHeroLevel);
-
-            if (GameManager.Instance != null)
+            if (GameManager.Instance != null && GameManager.Instance.HasEnoughGold(currentHeroCost))
             {
                 GameManager.Instance.SpendGold(currentHeroCost);
+                slotToPlace.PlaceHero(selectedHeroPrefab, currentHeroLevel);
+
+                if (AudioManager.Instance != null && AudioManager.Instance.btnClickSound != null)
+                    AudioManager.Instance.PlaySFX(AudioManager.Instance.btnClickSound);
             }
         }
 

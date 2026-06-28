@@ -17,9 +17,8 @@ public class HeroCombat : MonoBehaviour
     private Animator anim;
     private Transform currentTarget;
 
-    // Biến đếm thời gian hồi máu cho riêng Hệ Thủy
-    private float healTimer = 0f;
-    private float damageMultiplier = 1f; // Mặc định Lv1 là x1 sát thương
+    // SỬA Ở ĐÂY: Đổi thành public để Castle có thể đọc được hệ số sức mạnh
+    public float damageMultiplier = 1f;
 
     void Start()
     {
@@ -28,17 +27,7 @@ public class HeroCombat : MonoBehaviour
 
     void Update()
     {
-        // --- ĐẶC QUYỀN HỆ THỦY: HỒI 1% MÁU CASTLE / GIÂY ---
-        if (element == ElementType.Thuy && Castle.Instance != null)
-        {
-            healTimer += Time.deltaTime;
-            if (healTimer >= 1f)
-            {
-                float healAmount = Castle.Instance.maxHealth * 0.01f; // 1% máu tối đa
-                Castle.Instance.Heal(healAmount);
-                healTimer = 0f; // Reset thời gian
-            }
-        }
+        // ĐÃ XÓA ĐOẠN HỒI MÁU HỆ THỦY Ở ĐÂY!
 
         FindTarget();
 
@@ -72,6 +61,12 @@ public class HeroCombat : MonoBehaviour
     {
         if (anim != null) anim.SetTrigger("Attack");
 
+        // 📢 BỔ SUNG NGAY TẠI ĐÂY: Phát tiếng bắn cung vèo vèo
+        if (AudioManager.Instance != null && AudioManager.Instance.bowShootSound != null)
+        {
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.bowShootSound);
+        }
+
         if (arrowPrefab != null && firePoint != null)
         {
             GameObject arrow = Instantiate(arrowPrefab, firePoint.position, firePoint.rotation);
@@ -79,9 +74,7 @@ public class HeroCombat : MonoBehaviour
 
             if (projScript != null)
             {
-                // THAY ĐỔI: Gọi hàm Setup mới để truyền cả Mục tiêu lẫn Hệ nguyên tố vào viên đạn
                 projScript.SetupProjectile(currentTarget, element);
-                // THÊM DÒNG NÀY: Nhân sát thương của viên đạn với hệ số cấp độ!
                 projScript.damage *= damageMultiplier;
             }
         }

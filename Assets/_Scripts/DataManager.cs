@@ -2,7 +2,6 @@
 using System;
 using System.IO;
 
-// ĐÂY CHÍNH LÀ THẰNG GAMEDATA BỊ THIẾU KHIẾN UNITY BÁO LỖI NÀY:
 [System.Serializable]
 public class GameData
 {
@@ -23,7 +22,6 @@ public class DataManager : MonoBehaviour
 
     private void Awake()
     {
-        // Kiến trúc Singleton chuẩn để DataManager bất tử
         if (Instance == null)
         {
             Instance = this;
@@ -39,9 +37,7 @@ public class DataManager : MonoBehaviour
 
     public void SaveLocalData()
     {
-        // Chốt sổ giờ giấc ngay trước khi cất vào két
-        gameData.lastLoginTime = System.DateTime.Now.ToString();
-
+        gameData.lastLoginTime = DateTime.Now.ToString();
         string json = JsonUtility.ToJson(gameData);
         File.WriteAllText(filePath, json);
         Debug.Log("Đã lưu dữ liệu Offline: " + json);
@@ -54,45 +50,48 @@ public class DataManager : MonoBehaviour
             string json = File.ReadAllText(filePath);
             gameData = JsonUtility.FromJson<GameData>(json);
 
-            // ================= TÍNH TOÁN TIỀN IDLE TREO MÁY =================
             if (!string.IsNullOrEmpty(gameData.lastLoginTime))
             {
-                System.DateTime lastLogin;
-                if (System.DateTime.TryParse(gameData.lastLoginTime, out lastLogin))
+                if (DateTime.TryParse(gameData.lastLoginTime, out DateTime lastLogin))
                 {
-                    System.TimeSpan timeOffline = System.DateTime.Now - lastLogin;
+                    TimeSpan timeOffline = DateTime.Now - lastLogin;
                     double hoursOffline = timeOffline.TotalHours;
 
-                    // Điều kiện: Off trên 6 phút (0.1 giờ) và phải từng thắng ít nhất 1 Level
                     if (hoursOffline > 0.1f && gameData.highestClearedWave > 0)
                     {
-                        // Giới hạn chống hack/treo quá lâu: Tối đa nhận 24 giờ
-                        if (hoursOffline > 24.0) hoursOffline = 24.0;
+                        // Giới hạn tối đa 8 giờ
+                        if (hoursOffline > 8.0) hoursOffline = 8.0;
 
-                        // Công thức: Giờ AFK * Kỷ lục * Hệ số (50)
-                        int idleGold = (int)(hoursOffline * gameData.highestClearedWave * 50);
-                        gameData.currentGold += idleGold;
+                        // Lấy vàng thưởng mỗi giờ từ WaveManager (dựa vào level cao nhất đã clear)
+                        int goldPerHour = 0;
+                        if (WaveManager.levelGoldReward != null && WaveManager.levelGoldReward.TryGetValue(gameData.highestClearedWave, out goldPerHour))
+                        {
+                            int idleGold = (int)(hoursOffline * goldPerHour);
+                            gameData.currentGold += idleGold;
+                            Debug.Log($"<color=yellow>AFK {hoursOffline:F1} giờ. Nhận {idleGold} vàng từ Level {gameData.highestClearedWave} (thưởng {goldPerHour}/giờ)</color>");
+                        }
+                        else
+                        {
+                            // Fallback công thức cũ (phòng khi chưa có dữ liệu CSV)
+                            int idleGold = (int)(hoursOffline * gameData.highestClearedWave * 50);
+                            gameData.currentGold += idleGold;
+                            Debug.LogWarning($"Không tìm thấy vàng thưởng cho Level {gameData.highestClearedWave}, dùng công thức cũ: {idleGold} vàng");
+                        }
 
-                        Debug.Log($"<color=yellow>AFK {hoursOffline:F1} giờ. Nhận {idleGold} vàng từ Kỷ lục Level {gameData.highestClearedWave}!</color>");
-
-                        // Cộng tiền xong phải lưu đè lại vào két ngay cho chắc ăn
-                        SaveLocalData();
+                        SaveLocalData(); // lưu lại luôn sau khi cộng tiền idle
                     }
                 }
             }
-            // ================================================================
-
             Debug.Log("Đã tải dữ liệu thành công cho: " + gameData.username);
         }
         else
         {
             Debug.Log("Không tìm thấy file save. Tạo dữ liệu mới.");
             gameData = new GameData();
-            SaveLocalData(); // Tạo file gốc luôn nếu user mới chơi lần đầu
+            SaveLocalData();
         }
     }
 
-    // Tự động lưu khi tắt game trên điện thoại hoặc bấm tắt Play trên Unity
     private void OnApplicationQuit()
     {
         SaveLocalData();

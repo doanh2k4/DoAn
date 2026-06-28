@@ -19,6 +19,8 @@ public class BoosterManager : MonoBehaviour
         if (GameManager.Instance.HasEnoughGold(healCost))
         {
             GameManager.Instance.SpendGold(healCost);
+            // THÊM DÒNG NÀY: Phát tiếng Bơm máu
+            if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX(AudioManager.Instance.healSound);
 
             if (Castle.Instance != null)
             {
@@ -31,6 +33,9 @@ public class BoosterManager : MonoBehaviour
         {
             // Đã bọc else chuẩn chỉnh, thông báo không đủ tiền sẽ chạy đúng
             if (NotificationManager.Instance != null) NotificationManager.Instance.ShowWarning("Không đủ Vàng dùng kỹ năng!");
+            // 📢 THÊM DÒNG NÀY: Tiếng báo lỗi hết tiền
+            if (AudioManager.Instance != null && AudioManager.Instance.notEnoughGoldSound != null)
+                AudioManager.Instance.PlaySFX(AudioManager.Instance.notEnoughGoldSound);
         }
     }
 
@@ -40,6 +45,8 @@ public class BoosterManager : MonoBehaviour
         if (GameManager.Instance.HasEnoughGold(nukeCost))
         {
             GameManager.Instance.SpendGold(nukeCost);
+            // THÊM DÒNG NÀY VÀO TRONG USE NUKE: Phát tiếng Mưa sao băng nổ
+            if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX(AudioManager.Instance.nukeSound);
 
             // Tìm toàn bộ quái và gây 100 sát thương
             GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
@@ -57,6 +64,9 @@ public class BoosterManager : MonoBehaviour
         else
         {
             if (NotificationManager.Instance != null) NotificationManager.Instance.ShowWarning("Không đủ Vàng dùng kỹ năng!");
+            // 📢 THÊM DÒNG NÀY: Tiếng báo lỗi hết tiền
+            if (AudioManager.Instance != null && AudioManager.Instance.notEnoughGoldSound != null)
+                AudioManager.Instance.PlaySFX(AudioManager.Instance.notEnoughGoldSound);
         }
     }
 
@@ -73,19 +83,31 @@ public class BoosterManager : MonoBehaviour
         }
     }
 
+    // ================= SỬA LỖI HIỆU NĂNG Ở ĐÂY =================
     IEnumerator CameraShakeRoutine(float duration, float magnitude)
     {
-        Vector3 originalPos = Camera.main.transform.localPosition;
+        // 1. Chặn lỗi đỏ màn hình nếu không có Camera
+        if (Camera.main == null) yield break;
+
+        // 2. Cache Transform lại để không bắt CPU tìm Camera mỗi frame
+        Transform camTransform = Camera.main.transform;
+        Vector3 originalPos = camTransform.localPosition;
         float elapsed = 0.0f;
+
         while (elapsed < duration)
         {
             float x = originalPos.x + Random.Range(-1f, 1f) * magnitude;
             float y = originalPos.y + Random.Range(-1f, 1f) * magnitude;
-            Camera.main.transform.localPosition = new Vector3(x, y, originalPos.z);
+
+            // Dùng biến cache thay vì Camera.main
+            camTransform.localPosition = new Vector3(x, y, originalPos.z);
+
             elapsed += Time.deltaTime;
             yield return null;
         }
-        Camera.main.transform.localPosition = originalPos; // Trả camera về chỗ cũ
+
+        // Trả camera về chỗ cũ bằng biến cache
+        camTransform.localPosition = originalPos;
     }
 
     // ================= 3. ĐÓNG BĂNG =================
@@ -94,6 +116,8 @@ public class BoosterManager : MonoBehaviour
         if (GameManager.Instance.HasEnoughGold(freezeCost))
         {
             GameManager.Instance.SpendGold(freezeCost);
+            // THÊM DÒNG NÀY VÀO TRONG USE FREEZE: Phát tiếng Đóng băng
+            if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX(AudioManager.Instance.freezeSound);
 
             // Tìm quái và trói chân 3 giây
             GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
@@ -111,6 +135,9 @@ public class BoosterManager : MonoBehaviour
         else
         {
             if (NotificationManager.Instance != null) NotificationManager.Instance.ShowWarning("Không đủ Vàng dùng kỹ năng!");
+            // 📢 THÊM DÒNG NÀY: Tiếng báo lỗi hết tiền
+            if (AudioManager.Instance != null && AudioManager.Instance.notEnoughGoldSound != null)
+                AudioManager.Instance.PlaySFX(AudioManager.Instance.notEnoughGoldSound);
         }
     }
 

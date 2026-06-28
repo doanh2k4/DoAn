@@ -69,12 +69,20 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
+        AudioManager.Instance.bgmSource.Stop();
+        // 📢 THÊM DÒNG NÀY: Nhạc buồn bã thất bại
+        if (AudioManager.Instance != null && AudioManager.Instance.loseSound != null)
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.loseSound);
         if (losePanel != null) losePanel.SetActive(true);
         Time.timeScale = 0f;
     }
 
     public void Victory()
     {
+        AudioManager.Instance.bgmSource.Stop();
+        // 📢 THÊM DÒNG NÀY: Nhạc chiến thắng hào hùng
+        if (AudioManager.Instance != null && AudioManager.Instance.winSound != null)
+            AudioManager.Instance.PlaySFX(AudioManager.Instance.winSound);
         Debug.Log("<color=cyan>--- BẮT ĐẦU CHẠY HÀM VICTORY ---</color>");
 
         if (winPanel != null) winPanel.SetActive(true);

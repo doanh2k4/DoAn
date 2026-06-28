@@ -110,8 +110,9 @@ public class EnemyMovement : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
+        // 🚧 CHỐT CHẶN: Chết rồi thì miễn nhận thêm sát thương!
+        if (currentHealth <= 0) return;
         currentHealth -= amount;
-        Debug.Log($"Quái bị bắn! Trừ {amount} máu. Còn lại: {currentHealth}");
 
         if (hpSlider != null)
         {
@@ -126,6 +127,8 @@ public class EnemyMovement : MonoBehaviour
 
     private void Die()
     {
+        // THÊM DÒNG NÀY VÀO TRÊN CÙNG: Phát tiếng quái ẹo
+        if (AudioManager.Instance != null) AudioManager.Instance.PlaySFX(AudioManager.Instance.enemyDeathSound);
         // THUỐC GIẢI Ở ĐÂY: Lột tag Enemy để Trọng tài không đếm nhầm xác chết!
         gameObject.tag = "Untagged";
 

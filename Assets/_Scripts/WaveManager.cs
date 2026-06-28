@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using TMPro; // <-- BẮT BUỘC THÊM ĐỂ DÙNG TEXT UI
+using TMPro;
 
 [System.Serializable]
 public class SpawnData
@@ -16,6 +16,7 @@ public class SpawnData
 public class WaveManager : MonoBehaviour
 {
     public static WaveManager Instance;
+    public static Dictionary<int, int> levelGoldReward = new Dictionary<int, int>();
 
     [Header("Cài đặt Màn Chơi (Level)")]
     public int currentLevelToPlay = 1;
@@ -28,31 +29,33 @@ public class WaveManager : MonoBehaviour
     public Transform[] lanes;
 
     [Header("Giao diện Thông Báo")]
-    public TextMeshProUGUI waveNotificationText; // <-- Biến chứa UI Text
+    public TextMeshProUGUI waveNotificationText;
 
     [Header("Trạng thái Wave hiện tại")]
     public int currentWave = 1;
     private int maxWaveInCurrentLevel = 1;
-    private bool isSpawning = false;
+    private int activeSpawnGroups = 0;
 
     private Dictionary<int, List<SpawnData>> currentLevelWaves = new Dictionary<int, List<SpawnData>>();
 
     void Awake()
     {
         Instance = this;
+        currentLevelToPlay = PlayerPrefs.GetInt("SelectedLevel", 1);
+        LoadWaveDataFromCSV(); // Load dữ liệu CSV ngay lập tức để DataManager có thể đọc được
     }
 
     void Start()
     {
-        // 1. THÊM DÒNG NÀY: Mở gói hàng để nhận số Level hiện tại (mặc định là 1)
-        currentLevelToPlay = PlayerPrefs.GetInt("SelectedLevel", 1);
-        Debug.Log($"<color=cyan>ĐANG TẢI DỮ LIỆU TỪ FILE CSV CHO LEVEL: {currentLevelToPlay}</color>");
-
-        // Giấu thông báo đi lúc mới vào game
         if (waveNotificationText != null) waveNotificationText.gameObject.SetActive(false);
 
-        // 2. Tự động nó sẽ dùng currentLevelToPlay vừa nhận để lọc CSV!
-        LoadWaveDataFromCSV();
+        if (currentLevelWaves.Count == 0)
+        {
+            Debug.LogError($"Level {currentLevelToPlay} không tồn tại! Đưa người chơi về Main Menu.");
+            UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+            return;
+        }
+
         StartCoroutine(LevelGameplayRoutine());
     }
 
@@ -61,11 +64,14 @@ public class WaveManager : MonoBehaviour
         if (csvFile == null) return;
         string[] lines = csvFile.text.Split(new char[] { '\n', '\r' }, System.StringSplitOptions.RemoveEmptyEntries);
         maxWaveInCurrentLevel = 0;
+        levelGoldReward.Clear(); // Xóa dữ liệu cũ
+
+        int totalLevelsInGame = 1;
 
         for (int i = 1; i < lines.Length; i++)
         {
             string[] columns = lines[i].Split(',');
-            if (columns.Length < 5) continue;
+            if (columns.Length < 5) continue; // Cần ít nhất 5 cột cơ bản
 
             SpawnData data = new SpawnData();
             data.levelIndex = int.Parse(columns[0].Trim());
@@ -74,42 +80,47 @@ public class WaveManager : MonoBehaviour
             data.amount = int.Parse(columns[3].Trim());
             data.interval = float.Parse(columns[4].Trim());
 
+            // Đọc cột thứ 6: GoldReward (nếu có)
+            if (columns.Length >= 6)
+            {
+                int goldReward = int.Parse(columns[5].Trim());
+                if (!levelGoldReward.ContainsKey(data.levelIndex))
+                    levelGoldReward.Add(data.levelIndex, goldReward);
+                else
+                    levelGoldReward[data.levelIndex] = goldReward; // ghi đè (các dòng cùng level nên có giá trị giống nhau)
+            }
+
+            if (data.levelIndex > totalLevelsInGame) totalLevelsInGame = data.levelIndex;
+
             if (data.levelIndex == currentLevelToPlay)
             {
                 if (!currentLevelWaves.ContainsKey(data.waveIndex))
-                {
                     currentLevelWaves[data.waveIndex] = new List<SpawnData>();
-                }
                 currentLevelWaves[data.waveIndex].Add(data);
 
                 if (data.waveIndex > maxWaveInCurrentLevel)
                     maxWaveInCurrentLevel = data.waveIndex;
             }
         }
+
+        PlayerPrefs.SetInt("TotalLevelsInGame", totalLevelsInGame);
     }
 
     IEnumerator LevelGameplayRoutine()
     {
-        // ================= THÊM ĐOẠN NÀY ĐỂ HIỆN LEVEL =================
         if (waveNotificationText != null)
         {
-            // Hiện chữ "LEVEL [số]" với màu xanh dương cho khác biệt
             yield return StartCoroutine(ShowNotificationRoutine($"LEVEL {currentLevelToPlay}", 2f, Color.cyan));
-
-            // Đợi thêm 1 chút cho người chơi định thần trước khi vào Wave 1
             yield return new WaitForSeconds(0.5f);
         }
-        // ===============================================================
 
         currentWave = 1;
 
-        // Vòng lặp chạy từ Wave 1 đến Wave max
         while (currentWave <= maxWaveInCurrentLevel)
         {
             if (waveNotificationText != null)
                 StartCoroutine(ShowNotificationRoutine($"WAVE {currentWave} BẮT ĐẦU!", 2f, Color.red));
 
-            isSpawning = true;
             if (currentLevelWaves.ContainsKey(currentWave))
             {
                 foreach (SpawnData spawnGroup in currentLevelWaves[currentWave])
@@ -118,13 +129,7 @@ public class WaveManager : MonoBehaviour
                 }
             }
 
-            yield return new WaitForSeconds(2f);
-            isSpawning = false;
-
-            while (isSpawning || GameObject.FindGameObjectsWithTag("Enemy").Length > 0)
-            {
-                yield return new WaitForSeconds(1f);
-            }
+            yield return new WaitUntil(() => activeSpawnGroups == 0 && GameObject.FindGameObjectsWithTag("Enemy").Length == 0);
 
             if (waveNotificationText != null)
                 StartCoroutine(ShowNotificationRoutine($"DỌN SẠCH WAVE {currentWave}!", 2f, Color.green));
@@ -133,34 +138,25 @@ public class WaveManager : MonoBehaviour
             if (currentWave <= maxWaveInCurrentLevel) yield return new WaitForSeconds(3f);
         }
 
-        // ================= ĐOẠN NÀY QUAN TRỌNG NHẤT =================
-        // 1. Chờ hiệu ứng chữ Chiến Thắng hiện xong (chú ý có chữ yield return)
         if (waveNotificationText != null)
         {
             yield return StartCoroutine(ShowNotificationRoutine($"CHIẾN THẮNG LEVEL {currentLevelToPlay}!", 3f, Color.yellow));
         }
 
-        // 2. CHỮ MỜ ĐI XONG THÌ BẬT BẢNG VICTORY VÀ LƯU DATA!
         if (GameManager.Instance != null)
-        {
-            GameManager.Instance.Victory(); // Gọi điện sang GameManager!
-        }
+            GameManager.Instance.Victory();
         else
-        {
             Debug.LogError("LỖI KẾT NỐI: Không tìm thấy GameManager để báo cáo chiến thắng!");
-        }
     }
 
-    // ================= HIỆU ỨNG HIỂN THỊ CHỮ MƯỢT MÀ =================
     IEnumerator ShowNotificationRoutine(string message, float duration, Color textColor)
     {
         waveNotificationText.text = message;
         waveNotificationText.gameObject.SetActive(true);
 
-        float fadeTime = 0.3f; // Thời gian chớp lên/mờ đi (0.3s)
+        float fadeTime = 0.3f;
         float elapsed = 0f;
 
-        // FADE IN (Sáng dần)
         while (elapsed < fadeTime)
         {
             elapsed += Time.deltaTime;
@@ -169,10 +165,8 @@ public class WaveManager : MonoBehaviour
             yield return null;
         }
 
-        // CHỜ (Giữ nguyên chữ trên màn hình)
         yield return new WaitForSeconds(duration);
 
-        // FADE OUT (Mờ dần)
         elapsed = 0f;
         while (elapsed < fadeTime)
         {
@@ -184,15 +178,18 @@ public class WaveManager : MonoBehaviour
 
         waveNotificationText.gameObject.SetActive(false);
     }
-    // =================================================================
 
     IEnumerator SpawnGroupRoutine(SpawnData data)
     {
+        activeSpawnGroups++;
+
         for (int i = 0; i < data.amount; i++)
         {
             SpawnSingleEnemy(data.enemyIndex);
             yield return new WaitForSeconds(data.interval);
         }
+
+        activeSpawnGroups--;
     }
 
     void SpawnSingleEnemy(int enemyIndex)
